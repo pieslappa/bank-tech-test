@@ -10,4 +10,9 @@ describe("Bank class", () => {
   it("has a balance", () => {
     expect(account.balance).toEqual(0);
   });
+
+  it("can deposit money", () => {
+    account.deposit(100);
+    expect(account.balance).toEqual(100);
+  });
 });

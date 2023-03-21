@@ -6,6 +6,10 @@ class BankAccount {
   get balance() {
     return this._balance;
   }
+
+  deposit(amount) {
+    this._balance += amount;
+  }
 }
 
 module.exports = BankAccount;
