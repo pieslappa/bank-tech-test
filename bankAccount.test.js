@@ -15,4 +15,10 @@ describe("Bank class", () => {
     account.deposit(100);
     expect(account.balance).toEqual(100);
   });
+
+  it("can withdraw money", () => {
+    account.deposit(100);
+    account.withdraw(50);
+    expect(account.balance).toEqual(50);
+  });
 });
