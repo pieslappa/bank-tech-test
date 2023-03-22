@@ -1,11 +1,15 @@
 const Transaction = require("./Transaction");
 
 // Mock the Date constructor to return a fixed date
-global.Date = jest.fn(() => ({
-  getFullYear: () => 2022,
-  getMonth: () => 3,
-  getDate: () => 22,
-}));
+beforeAll(() => {
+  mockDate = jest
+    .spyOn(global.Date, "now")
+    .mockImplementation(() => new Date("2023-03-22"));
+});
+
+afterAll(() => {
+  mockDate.mockRestore();
+});
 
 describe("Transaction class", () => {
   describe("constructor", () => {
@@ -16,7 +20,7 @@ describe("Transaction class", () => {
       expect(transaction).toEqual({
         amount: 100,
         type: "deposit",
-        date: "22-04-2022",
+        date: "22-03-2023",
       });
     });
   });
@@ -26,9 +30,9 @@ describe("Transaction class", () => {
       // Create a new Transaction object
       const transaction = new Transaction(100, "deposit");
       // Call the getCurrentDate method
-      const currentDate = transaction.getCurrentDate();
+      console.log(transaction.date);
       // Check that the date is in the correct format
-      expect(currentDate).toBe("22-04-2022");
+      expect(transaction.date).toBe("22-03-2023");
     });
   });
 });
