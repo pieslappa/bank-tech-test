@@ -11,16 +11,53 @@ describe("Bank class", () => {
     expect(account.balance).toEqual(0);
   });
 
-  it("can deposit money", () => {
-    account.deposit(100);
-    expect(account._balance).toEqual(100);
-    expect(account._transactions).toHaveLength(1);
+  describe("deposit", () => {
+    it("throws an error if the user does not enter a number", () => {
+      expect(() => {
+        account.deposit("hello");
+      }).toThrow("Please enter a number");
+    });
+
+    it("allows a user to deposit a positive amount", () => {
+      account.deposit(100);
+      expect(account.balance).toEqual(100);
+      expect(account._transactions).toHaveLength(1);
+    });
+
+    it("does not allow a user to deposit a negative amount", () => {
+      expect(() => {
+        account.deposit(-100);
+      }).toThrow("Cannot deposit a negative amount");
+    });
   });
 
-  it("can withdraw money", () => {
-    account.deposit(100);
-    account.withdraw(50);
-    expect(account.balance).toEqual(50);
+  describe("withdraw", () => {
+    it("throws an error if the user does not enter a number", () => {
+      expect(() => {
+        account.deposit("hello");
+      }).toThrow("Please enter a number");
+    });
+
+    it("allows a user to withdraw a positive amount", () => {
+      account.deposit(100);
+      account.withdraw(50);
+      expect(account.balance).toEqual(50);
+      expect(account._transactions).toHaveLength(2);
+    });
+
+    it("does not allow a user to withdraw more than they have", () => {
+      expect(() => {
+        account.deposit(100);
+        account.withdraw(200);
+      }).toThrow("Not enough money in account");
+    });
+
+    it("does not allow a user to withdraw a negative amount", () => {
+      expect(() => {
+        account.deposit(100);
+        account.withdraw(-100);
+      }).toThrow("Cannot withdraw a negative amount");
+    });
   });
 
   it("can print a statement when transactions have occurred", () => {
