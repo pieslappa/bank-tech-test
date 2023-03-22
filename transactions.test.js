@@ -20,4 +20,15 @@ describe("Transaction class", () => {
       });
     });
   });
+
+  describe("getCurrentDate", () => {
+    it("should return the current date in the correct format", () => {
+      // Create a new Transaction object
+      const transaction = new Transaction(100, "deposit");
+      // Call the getCurrentDate method
+      const currentDate = transaction.getCurrentDate();
+      // Check that the date is in the correct format
+      expect(currentDate).toBe("22-04-2022");
+    });
+  });
 });
