@@ -1,6 +1,6 @@
-## Bank Tech Test
+# Bank Tech Test
 
-### Installation
+## Installation
 
 Clone the Git repo using
 
@@ -13,19 +13,20 @@ Move into the cloned repo's directory
 run npm to install necessary modules
 `$ npm install`
 
-### Testing
+## Testing
 
 To run Jest, run the following:
 `$ npm test`
 
-### How to Use the Program
+## How to Use the Program
 
 Firstly run the Node REPL
 `$ node`
 
 Then, we need to require the relevant module and initialise a new bankAccount:
 
-```const BankAccount = require("./bankAccount);
+```
+const BankAccount = require("./bankAccount);
 let account = new BankAccount();
 ```
 
