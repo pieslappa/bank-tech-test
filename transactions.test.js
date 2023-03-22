@@ -1,5 +1,5 @@
 const Transaction = require("./Transaction");
-
+let mockDate;
 // Mock the Date constructor to return a fixed date
 beforeAll(() => {
   mockDate = jest
@@ -29,8 +29,6 @@ describe("Transaction class", () => {
     it("should return the current date in the correct format", () => {
       // Create a new Transaction object
       const transaction = new Transaction(100, "deposit");
-      // Call the getCurrentDate method
-      console.log(transaction.date);
       // Check that the date is in the correct format
       expect(transaction.date).toBe("22-03-2023");
     });
