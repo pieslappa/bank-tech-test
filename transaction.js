@@ -2,10 +2,10 @@ class Transaction {
   constructor(amount, type, date = new Date()) {
     this.amount = amount;
     this.type = type;
-    this.date = Transaction.getCurrentDate();
+    this.date = this.getCurrentDate();
   }
 
-  static getCurrentDate() {
+  getCurrentDate() {
     const date = new Date();
     const year = date.getFullYear();
     const month = (date.getMonth() + 1).toString().padStart(2, "0");
