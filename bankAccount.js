@@ -12,18 +12,19 @@ class BankAccount {
   }
 
   deposit(amount) {
+    this._balance += amount;
     const transaction = new Transaction(amount, this._balance);
     this._transactions.push(transaction);
-    this._balance += amount;
   }
 
   withdraw(amount) {
+    this._balance -= amount;
     const transaction = new Transaction(-amount, this._balance);
     this._transactions.push(transaction);
-    this._balance -= amount;
   }
 
   statement() {
+    console.log(Statement.printStatement(this._transactions));
     return Statement.printStatement(this._transactions);
   }
 }
