@@ -14,6 +14,7 @@ describe("Bank class", () => {
   it("can deposit money", () => {
     account.deposit(100);
     expect(account.balance).toEqual(100);
+    expect(account.transactions).toHaveLength(1);
   });
 
   it("can withdraw money", () => {
