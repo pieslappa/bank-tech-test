@@ -2,13 +2,12 @@ const Transaction = require("./Transaction");
 let mockDate;
 // Mock the Date constructor to return a fixed date
 beforeAll(() => {
-  mockDate = jest
-    .spyOn(global.Date, "now")
-    .mockImplementation(() => new Date("2023/03/22"));
+  jest.useFakeTimers("modern");
+  jest.setSystemTime(new Date("2023-03-22T10:20:30Z"));
 });
 
 afterAll(() => {
-  mockDate.mockRestore();
+  jest.useRealTimers();
 });
 
 describe("Transaction class", () => {
@@ -19,6 +18,7 @@ describe("Transaction class", () => {
       // Check that the object has the correct properties
       expect(transaction).toEqual({
         amount: 100,
+        balance: 100,
         date: "22/03/2023",
       });
     });
