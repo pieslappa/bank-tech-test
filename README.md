@@ -25,7 +25,8 @@ Firstly run the Node REPL
 
 Then, we need to require the relevant module and initialise a new bankAccount:
 
-```const BankAccount = require("./bankAccount);
+```
+const BankAccount = require("./bankAccount);
 let account = new BankAccount();
 ```
 
