@@ -1,9 +1,10 @@
-const Transaction = require("./Transaction");
+const Transaction = require("./transaction");
+const Statement = require("./statement");
 
 class BankAccount {
   constructor() {
     this._balance = 0;
-    this.transactions = [];
+    this._transactions = [];
   }
 
   get balance() {
@@ -11,13 +12,19 @@ class BankAccount {
   }
 
   deposit(amount) {
-    const transaction = new Transaction(amount, "credit");
-    this.transactions.push(transaction);
+    const transaction = new Transaction(amount, this._balance);
+    this._transactions.push(transaction);
     this._balance += amount;
   }
 
   withdraw(amount) {
+    const transaction = new Transaction(-amount, this._balance);
+    this._transactions.push(transaction);
     this._balance -= amount;
+  }
+
+  statement() {
+    return Statement.printStatement(this._transactions);
   }
 }
 

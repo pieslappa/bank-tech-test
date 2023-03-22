@@ -1,5 +1,5 @@
 class Transaction {
-  constructor(amount, txDate = Date.now()) {
+  constructor(amount, txDate = new Date()) {
     this.amount = amount;
     this.date = this.constructor.getCurrentDate(txDate);
   }
